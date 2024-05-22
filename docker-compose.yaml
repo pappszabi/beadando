@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  jupyter:
+    image: jupyter/base-notebook
+    container_name: jupyter
+    hostname: jupyter
+    ports:
+      - 8888:8888
+    user: '0'
+    restart: always
+    volumes:
+      - /home/debian/docker/jupyter:/var/lib/jupyter
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    ports:
+      - 3000:3000
+    user: '0'
+    restart: always
+    volumes:
+      - /home/debian/docker/grafana:/var/lib/grafana
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    hostname: influxdb
+    ports:
+      - 8086:8086
+    user: '0'
+    restart: always
+    volumes:
+      - /home/debian/docker/influxdb:/var/lib/influxdb
